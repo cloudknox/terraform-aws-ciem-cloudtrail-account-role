@@ -22,7 +22,7 @@ resource "aws_iam_policy" "cloud_trail_acess_policy" {
 resource "aws_iam_role" "ciem_cloudtrail_role" {
   name = var.ciem_cloudtrail_account_role_name
 
-  assume_role_policy = templatefile("oidc_assume_role_policy.json", {
+  assume_role_policy = templatefile("${path.module}/template/oidc_assume_role_policy.json", {
     ACCOUNT_ID = var.oidc_provider_account_id,
     ROLE_NAME  = var.ciem_oidc_provider_role_name
   })
